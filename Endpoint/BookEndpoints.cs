@@ -16,7 +16,7 @@ namespace MinimalAPI_BookStore.Endpoint
 			app.MapGet("/api/books/{id:int}", GetBook).WithName("Book").Produces<APIResponse>(200);
 			app.MapPost("/api/AddBook", CreateBook).WithName("CreateBook").Accepts<BookCreateDTO>("application/json").Produces(201).Produces(400);
 			app.MapPut("/api/UpdateBook", UpdateBook).WithName("UpdateBook").Accepts<BookUpdateDTO>("application/json").Produces<APIResponse>(200).Produces(400);
-			app.MapDelete("/api/DeleteBook", DeleteBook).WithName("DeleteBook").Produces<APIResponse>(200);
+			app.MapDelete("/api/DeleteBook/{id:int}", DeleteBook).WithName("DeleteBook").Produces<APIResponse>(200);
 		}
 
 		private async static Task<IResult> GetAllBooks(IBookRepository _bookRepo)
